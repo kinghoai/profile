@@ -10,4 +10,6 @@
 
 Auth::routes();
 
-Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+Route::get('/', 'Admin\AdminController@index')->name('admin');
+
+Route::resource('/users', 'Admin\AdminUserController');
