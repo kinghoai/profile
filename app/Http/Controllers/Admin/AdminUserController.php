@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use Illuminate\Validation\Rule;
 
 class AdminUserController extends Controller
 {
@@ -52,7 +54,7 @@ class AdminUserController extends Controller
 
 	    $input = $request->all();
 	    $input['password'] = bcrypt($request->password);
-	    $user = $this->userRepository->create($input);
+	    $this->userRepository->create($input);
 	    return redirect(route('user.index'))->with('messenger', 'Create success');
     }
 
@@ -75,7 +77,8 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$user = $this->userRepository->find($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -87,7 +90,25 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $user = $this->userRepository->find($id);
+	    $request->validate([
+		    'name'=>[
+		    	'required',
+			    Rule::unique('users')->ignore($id),
+			    'min:5',
+			    'max:50'
+		    ],
+		    'email'=>[
+			    'required',
+			    'min:5',
+			    'max:50',
+			    Rule::unique('users')->ignore($id),
+		    ]
+	    ]);
+	    $input = $request->all();
+	    $input['password'] = bcrypt($request->password);
+	    $this->userRepository->update($user, $input);
+	    return redirect(route('user.index'))->with('messenger', 'Edit success');
     }
 
     /**
@@ -98,6 +119,8 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->userRepository->find($id);
+        $this->userRepository->destroy($user);
+	    return redirect(route('user.index'))->with('messenger', 'Delete success');
     }
 }

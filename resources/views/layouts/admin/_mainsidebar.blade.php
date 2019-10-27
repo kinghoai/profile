@@ -106,7 +106,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('user.create')}}" class="nav-link">
+                            <a href="{{route('user.edit', Auth::user()->id)}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Your profile</p>
                             </a>

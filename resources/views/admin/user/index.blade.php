@@ -32,9 +32,30 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user )
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->phone}}</td>
+                            <tr>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->phone}}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary btn-sm" href="#">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="{{route('user.edit', $user->id)}}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="d-inline-block" onclick="return confirm('Delete it. Are you sure?')">
+                                        <form action="{{ route('user.destroy', $user->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input class="btn btn-danger btn-sm" type="submit" value="Delete"/>
+                                        </form>
+                                    </a>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

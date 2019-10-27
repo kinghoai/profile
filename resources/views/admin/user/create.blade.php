@@ -6,8 +6,18 @@
 @section('content')
     <div class="row">
         <div class="col-6">
-            <form role="form">
+            <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
@@ -41,13 +51,10 @@
                         <input type="checkbox" class="form-check-input" id="sendEmail" checked="true" name="sendEmail">
                         <label class="form-check-label" for="sendEmail">Send email to new user</label>
                     </div>
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4">Create user</button>
                 </div>
             </form>
         </div>
     </div>
+
 @endsection
