@@ -4,19 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Repositories\Contracts\UserRepositoryInterface;
 
 class AdminUserController extends Controller
 {
-    /**
+	protected $userRepository;
+	public function __construct(UserRepositoryInterface $userRepository)
+	{
+		$this->userRepository = $userRepository;
+	}
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-	    return $users = User::all();
-	    return view('admin.user.index');
+    	$users = $this->userRepository->all();
+	    return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -37,7 +43,17 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $request->validate([
+		    'name'=>'required|min:5|max:50',
+		    'email'=>'required|unique:users|min:5|max:50',
+		    'password'=>'required|min:5|max:50',
+		    'retypepassword'=>'required|same:password|min:5|max:50',
+	    ]);
+
+	    $input = $request->all();
+	    $input['password'] = bcrypt($request->password);
+	    $user = $this->userRepository->create($input);
+	    return redirect(route('user.index'))->with('messenger', 'Create success');
     }
 
     /**
