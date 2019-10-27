@@ -8,8 +8,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Posts</h3>
-
+                    <a class="d-inline-block" href="{{route('post.create')}}"><button type="button" class="btn btn-sm btn-block btn-outline-primary">Add new</button></a>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
