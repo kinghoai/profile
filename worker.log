@@ -1,0 +1,96 @@
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Warning:  require(/var/www/html/vendor/autoload.php): failed to open stream: No such file or directory in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0
+PHP Fatal error:  require(): Failed opening required '/var/www/html/vendor/autoload.php' (include_path='.:/usr/share/php') in /var/www/html/artisan on line 18
+PHP Stack trace:
+PHP   1. {main}() /var/www/html/artisan:0

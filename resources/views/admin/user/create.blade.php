@@ -17,6 +17,10 @@
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                     </div>
                     <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter phone">
+                    </div>
+                    <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                     </div>
