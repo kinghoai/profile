@@ -18,7 +18,11 @@ class RepositoryServiceProvider extends ServiceProvider
         \App\Models\User::class => [
             \App\Repositories\Contracts\UserRepositoryInterface::class,
             \App\Repositories\Eloquent\EloquentUserRepository::class
-        ]
+        ],
+	    \App\Models\Page::class => [
+            \App\Repositories\Contracts\PageRepositoryInterface::class,
+            \App\Repositories\Eloquent\EloquentPageRepository::class
+        ],
     ];
 
     public function register()
