@@ -4,17 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\PostRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AdminPostController extends Controller
 {
-    /**
+	private $postRepository;
+	public function __construct(PostRepositoryInterface $postRepository)
+	{
+		$this->postRepository = $postRepository;
+	}
+
+	/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('admin.post.index');
+    	$posts = $this->postRepository->all();
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
@@ -35,7 +45,15 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+	        'title'=>'required|unique:posts|min:10|max:100',
+        ]);
+        $input = $request->all();
+        $input['slug'] = str_slug($input['title']);
+        $input['user_id'] = Auth::user()->id;
+        $this->postRepository->create($input);
+
+        return redirect(route('post.index'))->with('messenger', 'Created');
     }
 
     /**
@@ -57,7 +75,8 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = $this->postRepository->find($id);
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -69,7 +88,21 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $request->validate([
+		    'title'=>[
+		    	'required',
+	            'min:10',
+	            'max:100',
+			    Rule::unique('posts')->ignore($id)
+	        ]
+	    ]);
+	    $input = $request->all();
+	    $post = $this->postRepository->find($id);
+	    $input['slug'] = str_slug($input['title']);
+	    $input['user_id'] = Auth::user()->id;
+	    $this->postRepository->update($post, $input);
+
+	    return redirect(route('post.index'))->with('messenger', 'Edited');
     }
 
     /**
@@ -80,6 +113,8 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $post = $this->postRepository->find($id);
+	    $this->postRepository->destroy($post);
+	    return redirect(route('post.index'))->with('messenger', 'Deleted');
     }
 }

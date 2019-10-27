@@ -19,3 +19,13 @@ Route::resource('/category', 'Admin\AdminCategoryController');
 Route::resource('/page', 'Admin\AdminPageController');
 
 Route::resource('/post', 'Admin\AdminPostController');
+
+Route::resource('/skill', 'Admin\AdminSkillController');
+
+Route::resource('/experience', 'Admin\AdminExperienceController');
+
+Route::resource('/education', 'Admin\AdminEducationController');
+
+Route::resource('/project', 'Admin\AdminProjectController');
+
+
