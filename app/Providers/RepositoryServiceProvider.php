@@ -23,6 +23,22 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\PageRepositoryInterface::class,
             \App\Repositories\Eloquent\EloquentPageRepository::class
         ],
+	    \App\Models\Skill::class => [
+		    \App\Repositories\Contracts\SkillRepositoryInterface::class,
+		    \App\Repositories\Eloquent\EloquentSkillRepository::class
+	    ],
+	    \App\Models\Experience::class => [
+		    \App\Repositories\Contracts\ExperienceRepositoryInterface::class,
+		    \App\Repositories\Eloquent\EloquentExperienceRepository::class
+	    ],
+	    \App\Models\Education::class => [
+		    \App\Repositories\Contracts\EducationRepositoryInterface::class,
+		    \App\Repositories\Eloquent\EloquentEducationRepository::class
+	    ],
+	    \App\Models\Project::class => [
+		    \App\Repositories\Contracts\ProjectRepositoryInterface::class,
+		    \App\Repositories\Eloquent\EloquentProjectRepository::class
+	    ],
     ];
 
     public function register()
