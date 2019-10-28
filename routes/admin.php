@@ -10,22 +10,25 @@
 
 Auth::routes();
 
-Route::get('/', 'Admin\AdminController@index')->name('admin');
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/', 'Admin\AdminController@index')->name('admin');
 
-Route::resource('/user', 'Admin\AdminUserController');
+	Route::resource('/user', 'Admin\AdminUserController');
 
-Route::resource('/category', 'Admin\AdminCategoryController');
+	Route::resource('/category', 'Admin\AdminCategoryController');
 
-Route::resource('/page', 'Admin\AdminPageController');
+	Route::resource('/page', 'Admin\AdminPageController');
 
-Route::resource('/post', 'Admin\AdminPostController');
+	Route::resource('/post', 'Admin\AdminPostController');
 
-Route::resource('/skill', 'Admin\AdminSkillController');
+	Route::resource('/skill', 'Admin\SkillController');
 
-Route::resource('/experience', 'Admin\AdminExperienceController');
+	Route::resource('/experience', 'Admin\ExperienceController');
 
-Route::resource('/education', 'Admin\AdminEducationController');
+	Route::resource('/education', 'Admin\EducationController');
 
-Route::resource('/project', 'Admin\AdminProjectController');
+	Route::resource('/project', 'Admin\AdminProjectController');
+});
+
 
 

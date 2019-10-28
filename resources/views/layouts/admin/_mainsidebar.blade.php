@@ -86,6 +86,102 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Skills
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('skill.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All skills</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('skill.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Experiences
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('experience.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Experiences</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('experience.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Education
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('education.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Education</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('education.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-project-diagram"></i>
+                        <p>
+                            Projects
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('project.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Projects</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('project.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
