@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\EducationRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class EducationController extends Controller
 {
+	private $educationRepository;
+
+	public function __construct(EducationRepositoryInterface $educationRepository)
+	{
+		$this->educationRepository = $educationRepository;
+	}
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class EducationController extends Controller
      */
     public function index()
     {
-        //
+	    $educations = $this->educationRepository->all();
+	    return view('admin.education.index', compact('educations'));
     }
 
     /**
@@ -24,7 +33,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+	    return redirect(route('education.index'));
     }
 
     /**
@@ -35,7 +44,11 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $input = $request->all();
+	    $input['user_id'] = Auth::user()->id;
+	    $this->educationRepository->create($input);
+
+	    return redirect(route('education.index'))->with('messenger', 'Created success');
     }
 
     /**
@@ -57,7 +70,8 @@ class EducationController extends Controller
      */
     public function edit($id)
     {
-        //
+	    $education = $this->educationRepository->find($id);
+	    return view('admin.education.edit', compact('education'));
     }
 
     /**
@@ -69,7 +83,12 @@ class EducationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $education = $this->educationRepository->find($id);
+	    $input = $request->all();
+	    $input['user_id'] = Auth::user()->id;
+	    $this->educationRepository->update($education, $input);
+
+	    return redirect(route('education.index'))->with('messenger', 'Updated success');
     }
 
     /**
@@ -80,6 +99,8 @@ class EducationController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $education = $this->educationRepository->find($id);
+	    $this->educationRepository->destroy($education);
+	    return redirect(route('education.index'))->with('messenger', 'Deleted');
     }
 }

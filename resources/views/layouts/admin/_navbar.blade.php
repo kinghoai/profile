@@ -5,10 +5,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin" class="nav-link">Home</a>
+            <a href="{{route('user.showprofile', Auth::user()->slug)}}" class="nav-link" target="_blank">View your CV</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Send Bug</a>
         </li>
     </ul>
 

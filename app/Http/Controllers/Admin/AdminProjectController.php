@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\ProjectRepositoryInterface;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AdminProjectController extends Controller
 {
+	private $projectRepository;
+	public function __construct(ProjectRepositoryInterface $projectRepository)
+	{
+		$this->projectRepository = $projectRepository;
+	}
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class AdminProjectController extends Controller
      */
     public function index()
     {
-        //
+	    $projects = $this->projectRepository->all();
+	    return view('admin.project.index', compact('projects'));
     }
 
     /**
@@ -24,7 +34,7 @@ class AdminProjectController extends Controller
      */
     public function create()
     {
-        //
+	    return view('admin.project.create');
     }
 
     /**
@@ -35,7 +45,15 @@ class AdminProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $request->validate([
+		    'title'=>'required|unique:projects|min:10|max:100',
+	    ]);
+	    $input = $request->all();
+	    $input['slug'] = Str::slug($input['title']);
+	    $input['user_id'] = Auth::user()->id;
+	    $this->projectRepository->create($input);
+
+	    return redirect(route('project.index'))->with('messenger', 'Created');
     }
 
     /**
@@ -57,7 +75,8 @@ class AdminProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+	    $project = $this->projectRepository->find($id);
+	    return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -69,7 +88,21 @@ class AdminProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $request->validate([
+		    'title'=>[
+			    'required',
+			    'min:10',
+			    'max:100',
+			    Rule::unique('projects')->ignore($id)
+		    ]
+	    ]);
+	    $input = $request->all();
+	    $project = $this->projectRepository->find($id);
+	    $input['slug'] = Str::slug($input['title']);
+	    $input['user_id'] = Auth::user()->id;
+	    $this->projectRepository->update($project, $input);
+
+	    return redirect(route('project.index'))->with('messenger', 'Edited');
     }
 
     /**
@@ -80,6 +113,8 @@ class AdminProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $project = $this->projectRepository->find($id);
+	    $this->projectRepository->destroy($project);
+	    return redirect(route('project.index'))->with('messenger', 'Deleted');
     }
 }

@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//route show user CV
+Route::get('/profile/{slug}', 'Frontend\UserController@show')->name('user.showprofile');

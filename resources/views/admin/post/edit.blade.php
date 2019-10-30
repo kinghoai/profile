@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Create new post
+    Edit post
 @endsection
 @section('content')
     <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data" style="width:100%">

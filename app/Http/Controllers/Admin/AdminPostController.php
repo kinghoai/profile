@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\PostRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class AdminPostController extends Controller
 {
@@ -49,7 +50,7 @@ class AdminPostController extends Controller
 	        'title'=>'required|unique:posts|min:10|max:100',
         ]);
         $input = $request->all();
-        $input['slug'] = str_slug($input['title']);
+        $input['slug'] = Str::slug($input['title']);
         $input['user_id'] = Auth::user()->id;
         $this->postRepository->create($input);
 
@@ -98,7 +99,7 @@ class AdminPostController extends Controller
 	    ]);
 	    $input = $request->all();
 	    $post = $this->postRepository->find($id);
-	    $input['slug'] = str_slug($input['title']);
+	    $input['slug'] = Str::slug($input['title']);
 	    $input['user_id'] = Auth::user()->id;
 	    $this->postRepository->update($post, $input);
 

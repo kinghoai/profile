@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class AdminUserController extends Controller
 {
@@ -46,7 +47,7 @@ class AdminUserController extends Controller
     public function store(Request $request)
     {
 	    $request->validate([
-		    'name'=>'required|min:5|max:50',
+		    'name'=>'required|min:5|max:50|unique:users',
 		    'email'=>'required|unique:users|min:5|max:50',
 		    'password'=>'required|min:5|max:50',
 		    'retypepassword'=>'required|same:password|min:5|max:50',
@@ -54,6 +55,7 @@ class AdminUserController extends Controller
 
 	    $input = $request->all();
 	    $input['password'] = bcrypt($request->password);
+	    $input['slug'] = Str::slug('name');
 	    $this->userRepository->create($input);
 	    return redirect(route('user.index'))->with('messenger', 'Create success');
     }
@@ -107,6 +109,7 @@ class AdminUserController extends Controller
 	    ]);
 	    $input = $request->all();
 	    $input['password'] = bcrypt($request->password);
+	    $input['slug'] = Str::slug('name');
 	    $this->userRepository->update($user, $input);
 	    return redirect(route('user.index'))->with('messenger', 'Edit success');
     }

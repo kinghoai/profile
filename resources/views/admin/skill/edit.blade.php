@@ -1,7 +1,7 @@
 @extends('layouts.admin.master')
 
 @section('title')
-    Edit user
+    Edit Skill
 @endsection
 @section('content')
     <div class="row">

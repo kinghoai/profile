@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\ExperienceRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class ExperienceController extends Controller
 {
+	private $experienceRepository;
+
+	public function __construct(ExperienceRepositoryInterface $experienceRepository)
+	{
+		$this->experienceRepository = $experienceRepository;
+	}
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        //
+        $experiences = $this->experienceRepository->all();
+        return view('admin.experience.index', compact('experiences'));
     }
 
     /**
@@ -24,7 +33,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        //
+	    return redirect(route('experience.index'));
     }
 
     /**
@@ -35,7 +44,11 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	    $input = $request->all();
+	    $input['user_id'] = Auth::user()->id;
+	    $this->experienceRepository->create($input);
+
+	    return redirect(route('experience.index'))->with('messenger', 'Created success');
     }
 
     /**
@@ -57,7 +70,8 @@ class ExperienceController extends Controller
      */
     public function edit($id)
     {
-        //
+	    $experience = $this->experienceRepository->find($id);
+	    return view('admin.experience.edit', compact('experience'));
     }
 
     /**
@@ -69,7 +83,12 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+	    $experience = $this->experienceRepository->find($id);
+	    $input = $request->all();
+	    $input['user_id'] = Auth::user()->id;
+	    $this->experienceRepository->update($experience, $input);
+
+	    return redirect(route('experience.index'))->with('messenger', 'Updated success');
     }
 
     /**
@@ -80,6 +99,8 @@ class ExperienceController extends Controller
      */
     public function destroy($id)
     {
-        //
+	    $experience = $this->experienceRepository->find($id);
+	    $this->experienceRepository->destroy($experience);
+	    return redirect(route('experience.index'))->with('messenger', 'Deleted');
     }
 }
