@@ -22,40 +22,10 @@
     <script src="/js/modernizr.custom.js"></script>
 @endsection
 @section('content')
-    <div id="container" class="container">
-        <!-- Left Menu / Logo-->
-        <aside class="menu" id="menu">
-            <div class="logo">
-                <!-- Logo image-->
-                <img src="/image/logo.png" width="140" height="140" alt=""/>
-                <!-- Logo name-->
-                <span>Andrew Smith</span></div>
-            <!-- Mobile Navigation-->
-            <a href="#menu1" class="menu-link"></a>
-            <!-- Left Navigation-->
-            <nav id="menu1" role="navigation">
-                <a href="#chapterintroduction">
-                    <span id="link_introduction" class="active">Home</span>
-                </a>
-                <a href="#chapterabout">
-                    <span id="link_about">About</span>
-                </a>
-                <a href="#chapterskills"><span id="link_skills">Skills</span></a>
-                <a href="#chapterexperience"><span id="link_experience">Experience</span></a>
-                <a href="#chaptereducation"><span id="link_education">Education</span></a>
-                <a href="#chapterportfolio"><span id="link_portfolio">Portfolio</span></a>
-                <a href="#chaptercontact"><span id="link_contact">Contact</span></a>
-                <a href="blog.html"><span id="link_blog">Blog</span></a>
-            </nav>
-            <div class="copyright"> © {{$user->name}}.<br>
-                All Rights Reserved.
-            </div>
-        </aside>
         <!-- Go to top link for mobile device -->
         <a href="#menu" class="totop-link">Go to the top</a>
         <div class="content-scroller">
             <div class="content-wrapper">
-
                 <!-- Introduction -->
                 <article class="content introduction noscroll" id="chapterintroduction">
                     <div class="inner">
@@ -121,30 +91,13 @@
                                 <div class="row">
                                     <h3>Knowledge</h3>
                                     <p>{{$user->knowledge_description}}.</p>
+                                    @foreach($knowledgeSkills as $knowledgeSkill)
                                     <div class="col-4 margin-top10">
                                         <ul>
-                                            <li>Google Analythics & SEO</li>
-                                            <li>Instal and Configure</li>
-                                            <li>E-commerce Platform</li>
-                                            <li>Color theory knowledge</li>
+                                            <li>{{$knowledgeSkill->title}}</li>
                                         </ul>
                                     </div>
-                                    <div class="col-4 margin-top10">
-                                        <ul>
-                                            <li>Photo manipulation skills</li>
-                                            <li>Digital Painting</li>
-                                            <li>Photo Composition</li>
-                                            <li>Good sense of Tipography</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-4 margin-top10">
-                                        <ul>
-                                            <li>Web Usability</li>
-                                            <li>Grid & Layout</li>
-                                            <li>Portrait Retouching</li>
-                                            <li>Video Editing</li>
-                                        </ul>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="full-divider"></div>
@@ -324,8 +277,7 @@
                                         </div>
                                         <div class="col-6 m-margin-top30">
                                             <h3>I'm also on Social Networks</h3>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem
-                                            sed quam tempus aliquet vitae eget dolor.
+                                            This is my social. Please send me friend requests.
                                             <div class="contact-social margin-top30">
                                                 @if($user->facebook != '')
                                                 <a href="{!! $user->facebook !!}" target="_blank">
@@ -395,7 +347,6 @@
             <!-- content-wrapper -->
         </div>
         <!-- content-scroller -->
-    </div>
 @endsection
 @section('scripts')
     <script type="text/javascript" src="/js/jquery.min.js"></script>

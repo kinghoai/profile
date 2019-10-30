@@ -15,8 +15,10 @@
     @yield('styles')
 </head>
 <body>
-@yield('content')
-
+<div id="container" class="container">
+    @include('layouts.frontend._leftmenu')
+    @yield('content')
+</div>
 @yield('scripts')
 
 </body>
