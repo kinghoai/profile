@@ -1,17 +1,17 @@
 @extends('layouts.frontend.app')
 @section('title')
-    Ten
+    {{$user->name}}
 @endsection
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="/css/scroll.css" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/scroll.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <!-- Icon -->
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css"/>
     <!-- Portfolio Thumbnail / Slider -->
-    <link rel="stylesheet" type="text/css" href="/css/portfolio.css" />
+    <link rel="stylesheet" type="text/css" href="/css/portfolio.css"/>
     <link rel="stylesheet" type="text/css" href="/css/carousel.css">
     <!-- Responsive -->
-    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css"/>
     <!-- Pie Chart / Skills -->
     <script type="text/javascript" src="/js/jquery-2.0.3.min.js"></script>
     <!-- Send Email -->
@@ -33,10 +33,23 @@
             <!-- Mobile Navigation-->
             <a href="#menu1" class="menu-link"></a>
             <!-- Left Navigation-->
-            <nav id="menu1" role="navigation"> <a href="#chapterintroduction"><span id="link_introduction" class="active">Home</span></a> <a href="#chapterabout"><span id="link_about">About</span></a> <a href="#chapterskills"><span id="link_skills">Skills</span></a> <a href="#chapterexperience"><span id="link_experience">Experience</span></a> <a href="#chaptereducation"><span id="link_education">Education</span></a> <a href="#chapterportfolio"><span id="link_portfolio">Portfolio</span></a><a href="#chaptercontact"><span id="link_contact">Contact</span></a><a href="blog.html"><span id="link_blog">Blog</span></a></nav>
-            <div class="social"> <a href="https://www.facebook.com" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> <a href="https://plus.google.com" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a> </div>
-            <div class="copyright"> © Andrew Smith.<br>
-                All Rights Reserved. </div>
+            <nav id="menu1" role="navigation">
+                <a href="#chapterintroduction">
+                    <span id="link_introduction" class="active">Home</span>
+                </a>
+                <a href="#chapterabout">
+                    <span id="link_about">About</span>
+                </a>
+                <a href="#chapterskills"><span id="link_skills">Skills</span></a>
+                <a href="#chapterexperience"><span id="link_experience">Experience</span></a>
+                <a href="#chaptereducation"><span id="link_education">Education</span></a>
+                <a href="#chapterportfolio"><span id="link_portfolio">Portfolio</span></a>
+                <a href="#chaptercontact"><span id="link_contact">Contact</span></a>
+                <a href="blog.html"><span id="link_blog">Blog</span></a>
+            </nav>
+            <div class="copyright"> © {{$user->name}}.<br>
+                All Rights Reserved.
+            </div>
         </aside>
         <!-- Go to top link for mobile device -->
         <a href="#menu" class="totop-link">Go to the top</a>
@@ -46,13 +59,13 @@
                 <!-- Introduction -->
                 <article class="content introduction noscroll" id="chapterintroduction">
                     <div class="inner">
-                        <h2><span>HEllo, I'm</span><br>
-                            Andrew Smith</h2>
-                        <span class="title">UX Designer / Frontend Developer</span> </div>
+                        <h2><span>Hello, I'm</span><br>
+                            {{$user->name}}</h2>
+                        <span class="title">{{$user->job}}</span></div>
                     <div id="owl-demo" class="owl-carousel">
-                        <div class="item"><img src="/image/profile.jpg" alt="" /></div>
-                        <div class="item"><img src="/image/profile-01.jpg" alt="" /></div>
-                        <div class="item"><img src="/image/profile-02.jpg" alt="" /></div>
+                        <div class="item"><img src="/image/profile.jpg" alt=""/></div>
+                        <div class="item"><img src="/image/profile-01.jpg" alt=""/></div>
+                        <div class="item"><img src="/image/profile-02.jpg" alt=""/></div>
                     </div>
                 </article>
 
@@ -63,17 +76,18 @@
                         <div class="title-divider"></div>
                         <div class="about-con">
                             <ul>
-                                <li>Name: Andrew Smith</li>
-                                <li>Email: <a href="mailto:andrew@gmail.com">andrew@gmail.com</a></li>
-                                <li>Phone: (123) - 456-7890</li>
-                                <li>Date of birth: 23 February 1986</li>
-                                <li>Address: PO Box 16122 Collins Street West, Victoria, USA.</li>
-                                <li>Nationality: United States</li>
+                                <li>Name: {{$user->name}}.</li>
+                                <li>Email: <a href="mailto:andrew@gmail.com">{{$user->email}}.</a></li>
+                                <li>Phone: {{$user->email}}.</li>
+                                <li>Date of birth: {{$user->birthday}}.</li>
+                                <li>Address: {{$user->address}}.</li>
                             </ul>
                             <h3>Professional Profile</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit.<br>
+                            <p>{{$user->about_description}}.<br>
                             </p>
-                            <a href="#" class="button">Download resume as PDF format</a> <img src="/image/signature.jpg" class="signature" alt=""/> </div>
+                            {{--<a href="#" class="button">Download resume as PDF format</a> <img src="/image/signature.jpg"--}}
+                                                                                              {{--class="signature" alt=""/>--}}
+                        </div>
                     </div>
                 </article>
 
@@ -83,45 +97,30 @@
                         <h2>Skills</h2>
                         <div class="title-divider"></div>
                         <h3>Just My Awesome Skills</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                        <p>{{$user->skill_description}}.</p>
                         <div class="skills-con">
                             <div class="container-sub margin-top50">
                                 <div class="row">
+                                    @foreach($skillSkills as $skillSkill)
                                     <div class="col-6 margin-bottom50">
-                                        <div class="col-6"><span class="chart" data-percent="25"><span class="percent"></span> </span></div>
+                                        <div class="col-6">
+                                            <span class="chart" data-percent="{{$skillSkill->percent}}">
+                                                <span class="percent"></span>
+                                            </span>
+                                        </div>
                                         <div class="col-6 chart-text">
-                                            <h4>Film Editing</h4>
-                                            <p>Expert, 4 years</p>
+                                            <h4>{{$skillSkill->title}}</h4>
+                                            <p>{{$skillSkill->level}}</p>
                                         </div>
                                     </div>
-                                    <div class="col-6 margin-bottom50">
-                                        <div class="col-6"><span class="chart" data-percent="18"><span class="percent"></span> </span></div>
-                                        <div class="col-6 chart-text">
-                                            <h4>Art Direction</h4>
-                                            <p>Advanced, 2 years</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="col-6"><span class="chart" data-percent="90"><span class="percent"></span> </span></div>
-                                        <div class="col-6 chart-text">
-                                            <h4>Technical Expertise</h4>
-                                            <p>Expert, 8 years</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="col-6"><span class="chart" data-percent="96"><span class="percent"></span> </span></div>
-                                        <div class="col-6 chart-text">
-                                            <h4>HTML5 CSS3</h4>
-                                            <p>Expert, 8 years</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="full-divider"></div>
                             <div class="container-sub skill-list">
                                 <div class="row">
                                     <h3>Knowledge</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                                    <p>{{$user->knowledge_description}}.</p>
                                     <div class="col-4 margin-top10">
                                         <ul>
                                             <li>Google Analythics & SEO</li>
@@ -152,25 +151,15 @@
                             <div class="container-sub">
                                 <div class="row">
                                     <h3>Language Skills</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                                    <p>{{$user->language_description}}.</p>
+                                    @foreach($languageSkills as $languageSkill)
                                     <div class="progressbar-main margin-top50">
-                                        <div class="progress-bar-description">English Experienced</div>
-                                        <div id="progressBar" class="progress">
-                                            <div class="progress-value"></div>
+                                        <div class="progress-bar-description">{{$languageSkill->title}}</div>
+                                        <div class="progress">
+                                            <div class="progress-value" style="width: {{$languageSkill->percent}}%;"><span>{{$languageSkill->percent}}</span></div>
                                         </div>
                                     </div>
-                                    <div class="progressbar-main margin-top40">
-                                        <div class="progress-bar-description">French Advanced</div>
-                                        <div id="progressBar2" class="progress">
-                                            <div class="progress-value"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progressbar-main margin-top40">
-                                        <div class="progress-bar-description">German Basic</div>
-                                        <div id="progressBar3" class="progress">
-                                            <div class="progress-value"></div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -182,66 +171,27 @@
                     <div class="inner">
                         <h2>Experience</h2>
                         <div class="title-divider"></div>
-                        <h3>14 Years Experience!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                        <h3>My Experience!</h3>
+                        <p>{{$user->experience_description}}.</p>
                         <div class="experience-con">
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
-                                    <div class="experience-details">
+                                    @foreach($experiences as $experience)
+                                    <div class="experience-details" style="width: 100%">
                                         <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-send-o"></i></div>
+                                            <div class="col-3 icon-block">{!! $experience->icon ? $experience->icon : '<i class="fa fa-send-o"></i>'!!}</div>
                                             <div class="flot-left">
-                                                <h5>Panara Media</h5>
-                                                <h4>Art Director</h4>
-                                                <span>2014 - 2013</span> </div>
+                                                <h5>{{$experience->company}}</h5>
+                                                <h4>{{$experience->job}}</h4>
+                                                <span>{{$experience->time}}</span></div>
                                         </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
+                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top">
+                                            {{$experience->description}}
+                                        </div>
                                     </div>
                                     <div class="full-divider"></div>
-                                    <div class="experience-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-briefcase"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Ace Advertising</h5>
-                                                <h4>Project Manager</h4>
-                                                <span>2013 - 2011</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
-                                    <div class="full-divider"></div>
-                                    <div class="experience-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-arrows-alt"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Linksture Web</h5>
-                                                <h4>Senior UX Designer</h4>
-                                                <span>2011 - 2008</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
-                                    <div class="full-divider"></div>
-                                    <div class="experience-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-quote-right"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Matrix Media</h5>
-                                                <h4>Visual / UI Designer</h4>
-                                                <span>2008 - 2006</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
-                                    <div class="full-divider"></div>
-                                    <div class="experience-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-bullhorn"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Creatika Agency</h5>
-                                                <h4>Graphic Designer</h4>
-                                                <span>2006 - 2004</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -254,174 +204,84 @@
                         <h2>Education</h2>
                         <div class="title-divider"></div>
                         <h3>Just My Education</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                        <p>{{$user->education_description}}.</p>
                         <div class="education-con">
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
-                                    <div class="education-details">
+                                    @foreach($educations as $education)
+                                    <div class="education-details" style="width: 100%">
                                         <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-photo"></i></div>
+                                            <div class="col-3 icon-block">{!! $education->icon ? $education->icon : '<i class="fa fa-laptop"></i>' !!}</div>
                                             <div class="flot-left">
-                                                <h5>University of Design</h5>
-                                                <h4>Bachelor of Arts</h4>
-                                                <span>2009 - 2010</span> </div>
+                                                <h5>{{$education->school}}</h5>
+                                                <h4>{{$education->subjects}}</h4>
+                                                <span>{{$education->time}}</span></div>
                                         </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
+                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top">
+                                            {{$education->description}}.
+                                        </div>
                                     </div>
                                     <div class="full-divider"></div>
-                                    <div class="education-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-laptop"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Boston State University</h5>
-                                                <h4>Visual Art & Design</h4>
-                                                <span>2006 - 2007</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
-                                    <div class="full-divider"></div>
-                                    <div class="education-details">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block"><i class="fa fa-life-bouy"></i></div>
-                                            <div class="flot-left">
-                                                <h5>Boston State University</h5>
-                                                <h4>Degree of Design</h4>
-                                                <span>2004 - 2005</span> </div>
-                                        </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top"> Phasellus nec gravida purus. Aliquam ac enim vel ipsum consectetur vulputate. Duis quis feugiat neque. Pellentesque eleifend, nisi vel mattis vestibulum, est lacus pretium quam. </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Pportfolio -->
+                <!-- Project -->
                 <article class="content portfolio white-bg" id="chapterportfolio">
                     <div class="inner">
                         <h2>Portfolio</h2>
                         <div class="title-divider"></div>
                         <h3>Our portfolio features a variety of projects and services</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                        <p>{{$user->project_description}}.</p>
                         <div class="portfolio-con">
                             <div class="container-sub margin-top50">
                                 <div class="row">
                                     <div id="grid-gallery" class="grid-gallery">
                                         <section class="grid-wrap">
                                             <ul class="grid">
+                                                @foreach($projects as $project)
                                                 <li>
-                                                    <figure> <img src="/image/work1.jpg" alt=""/>
+                                                    <figure><img src="/image/work1.jpg" alt=""/>
                                                         <figcaption>
-                                                            <div class="figcaption-details"> <img src="/image/icon-plus.png" height="82" width="82" alt="" />
-                                                                <h3>The Flavour Restaurant</h3>
-                                                                <span>Website Design & Development</span> </div>
+                                                            <div class="figcaption-details"><img
+                                                                    src="/image/icon-plus.png" height="82" width="82"
+                                                                    alt=""/>
+                                                                <h3>{{$project->title}}</h3>
+                                                            </div>
                                                         </figcaption>
                                                     </figure>
                                                 </li>
-                                                <li>
-                                                    <figure> <img src="/image/work2.jpg" alt="" />
-                                                        <figcaption>
-                                                            <div class="figcaption-details"> <img src="/image/icon-plus.png" height="82" width="82" alt="" />
-                                                                <h3>Herbal Beauty Salon</h3>
-                                                                <span>Photography</span> </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure> <img src="/image/work3.jpg" alt="" />
-                                                        <figcaption>
-                                                            <div class="figcaption-details"> <img src="/image/icon-plus.png" height="82" width="82" alt="" />
-                                                                <h3>Kayra Modelleri</h3>
-                                                                <span>Branding and Identity</span> </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure> <img src="/image/work4.jpg" alt="" />
-                                                        <figcaption>
-                                                            <div class="figcaption-details"> <img src="/image/icon-plus.png" height="82" width="82" alt="" />
-                                                                <h3>Fashion and You</h3>
-                                                                <span>APPS and Web Design</span> </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure> <img src="/image/work5.jpg" alt="" />
-                                                        <figcaption>
-                                                            <div class="figcaption-details"> <img src="/image/icon-plus.png" height="82" width="82" alt="" />
-                                                                <h3>Whole Food Flour</h3>
-                                                                <span>Branding and Identity</span> </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </section>
 
                                         <!-- Lightbox Popup -->
                                         <section class="slideshow">
                                             <ul>
+                                                @foreach($projects as $project)
                                                 <li>
                                                     <figure>
                                                         <figcaption>
-                                                            <h3>The Flavour Restaurant</h3>
-                                                            <span>Website Design & Development</span>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, 						ullamco craft beer.</p>
+                                                            <h3>{{$project->title}}</h3>
+                                                            <p>{{$project->description}}.</p>
                                                         </figcaption>
                                                         <div id="owl-demo1" class="owl-carousel">
-                                                            <div class="item"><img src="/image/work-details1.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work-details2.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work-details3.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work-details4.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work-details5.jpg" alt="" /></div>
+                                                            <div class="item"><img src="/image/work-details1.jpg" alt=""/></div>
+                                                            {{--<div class="item"><img src="/image/work-details2.jpg" alt=""/></div>--}}
+                                                            {{--<div class="item"><img src="/image/work-details3.jpg" alt=""/></div>--}}
+                                                            {{--<div class="item"><img src="/image/work-details4.jpg" alt=""/></div>--}}
+                                                            {{--<div class="item"><img src="/image/work-details5.jpg" alt=""/></div>--}}
                                                         </div>
                                                     </figure>
                                                 </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Herbal Beauty Salon</h3>
-                                                            <span>Photography</span>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, ullamco craft beer.</p>
-                                                        </figcaption>
-                                                        <img src="/image/work2.jpg" alt="" /></figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Kayra Modelleri</h3>
-                                                            <span>Branding and Identity</span>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, ullamco craft beer.</p>
-                                                        </figcaption>
-                                                        <div id="owl-demo2" class="owl-carousel">
-                                                            <div class="item"><img src="/image/work3.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work1.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work2.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work4.jpg" alt="" /></div>
-                                                            <div class="item"><img src="/image/work5.jpg" alt="" /></div>
-                                                        </div>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Fashion and You</h3>
-                                                            <span>APPS and Web Design</span>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, ullamco craft beer.</p>
-                                                        </figcaption>
-                                                        <iframe width="854" height="480" src="//www.youtube.com/embed/ZwzY1o_hB5Y" frameborder="0" allowfullscreen></iframe>  </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Whole Food Flour</h3>
-                                                            <span>Branding and Identity</span>
-                                                            <p>Kale chips lomo biodiesel stumptown Godard Tumblr, mustache sriracha tattooed cray aute slow-carb placeat delectus. Letterpress asymmetrical fanny pack art party est pour-over skateboard anim quis, ullamco craft beer.</p>
-                                                        </figcaption>
-                                                        <img src="/image/work5.jpg" alt="" /> </figure>
-                                                </li>
+                                                @endforeach
                                             </ul>
-                                            <nav> <span class="fa nav-prev"></span> <span class="fa nav-next"></span> <span class="fa nav-close"></span> </nav>
+                                            <nav><span class="fa nav-prev"></span> <span class="fa nav-next"></span>
+                                                <span class="fa nav-close"></span></nav>
                                         </section>
                                     </div>
                                 </div>
@@ -436,7 +296,7 @@
                         <h2>Contact</h2>
                         <div class="title-divider"></div>
                         <h3>Let's Keep In Touch</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor. Proin eu ultrices libero. Curabitur vulputate vestibulum elementum. Suspendisse id neque a nibh mollis blandit. Quisque varius eros ac purus dignissim.</p>
+                        <p>{{$user->contact_description}}.</p>
                         <div class="full-divider"></div>
                         <div class="contact-con margin-top50">
                             <div class="container-sub">
@@ -444,26 +304,55 @@
                                     <div class="contact-details">
                                         <div class="col-6">
                                             <div class="contact-text">
-                                                <div class="col-2 icon-block address"><i class="fa fa-map-marker"></i></div>
-                                                <div class="flot-left"> <strong>Andrew Smith</strong><br>
-                                                    PO Box 16122 Collins Street West,<br>
-                                                    Victoria 8007, United States. </div>
+                                                <div class="col-2 icon-block address"><i class="fa fa-map-marker"></i>
+                                                </div>
+                                                <div class="flot-left"><strong>{{$user->name}}</strong><br>
+                                                    {{$user->address}}.
+                                                </div>
                                             </div>
                                             <div class="contact-text">
                                                 <div class="col-2 icon-block phone"><i class="fa fa-phone"></i></div>
-                                                <div class="flot-left"> <strong>Phone</strong><br>
-                                                    +123-456-7890 </div>
+                                                <div class="flot-left"><strong>Phone</strong><br>
+                                                    {{$user->phone}}
+                                                </div>
                                             </div>
                                             <div class="contact-text">
                                                 <div class="col-2 icon-block email"><i class="fa fa-envelope"></i></div>
-                                                <div class="flot-left"> <strong>Email</strong><br>
-                                                    <a href="mailto:no-reply@domain.com">no-reply@domain.com</a> </div>
+                                                <div class="flot-left"><strong>Email</strong><br>
+                                                    <a href="mailto:no-reply@domain.com">{{$user->email}}</a></div>
                                             </div>
                                         </div>
                                         <div class="col-6 m-margin-top30">
                                             <h3>I'm also on Social Networks</h3>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem sed quam tempus aliquet vitae eget dolor.
-                                            <div class="contact-social margin-top30"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.youtube.com" target="_blank"><i class="fa fa-youtube"></i></a><a href="https://plus.google.com" target="_blank"><i class="fa fa-google-plus"></i></a><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a> </div>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare sem
+                                            sed quam tempus aliquet vitae eget dolor.
+                                            <div class="contact-social margin-top30">
+                                                @if($user->facebook != '')
+                                                <a href="{!! $user->facebook !!}" target="_blank">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                                @endif
+                                                @if($user->twitter != '')
+                                                <a href="{!! $user->twitter !!}" target="_blank">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                                @endif
+                                                @if($user->youtube != '')
+                                                <a href="{!! $user->youtube !!}" target="_blank">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                                @endif
+                                                @if($user->google != '')
+                                                <a href="{!! $user->google !!}" target="_blank">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                                @endif
+                                                @if($user->linkedin != '')
+                                                <a href="{!! $user->linkedin !!}" target="_blank">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -473,12 +362,13 @@
                                 <div class="row">
                                     <div class="contact-form">
                                         <h3>Drop Me a Line</h3>
-                                        <form id="form1" name="form1" method="post" >
-                                            <input name="name" type="text" id="name" placeholder="Your Name..." />
-                                            <input name="email" type="text" id="email" placeholder="Your Email..." />
-                                            <textarea name="message" id="message" cols="45" rows="5" placeholder="Your Message..."></textarea>
-                                            <input type="submit" name="button" id="button" value="say hello!" >
-                                            <div id="successmsg" ></div>
+                                        <form id="form1" name="form1" method="post">
+                                            <input name="name" type="text" id="name" placeholder="Your Name..."/>
+                                            <input name="email" type="text" id="email" placeholder="Your Email..."/>
+                                            <textarea name="message" id="message" cols="45" rows="5"
+                                                      placeholder="Your Message..."></textarea>
+                                            <input type="submit" name="button" id="button" value="say hello!">
+                                            <div id="successmsg"></div>
                                         </form>
                                     </div>
                                 </div>
@@ -517,27 +407,27 @@
     <script type="text/javascript" src="/js/grid_gallery.js"></script>
     <!-- Portfolio Grid -->
     <script>
-        new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+        new CBPGridGallery(document.getElementById('grid-gallery'));
     </script>
     <!-- Portfolio Slider-->
-    <script type="text/javascript"  src="/js/carousel.js"></script>
+    <script type="text/javascript" src="/js/carousel.js"></script>
     <script type="text/javascript" src="/js/jquery.easypiechart.js"></script>
     <script type="text/javascript" src="/js/text.rotator.js"></script>
     <!-- Page Scrolling -->
     <script>
         head.js(
-            { mousewheel : "/js/jquery.mousewheel.js" },
-            { mwheelIntent : "/js/mwheelIntent.js" },
-            { jScrollPane : "/js/jquery.jscrollpane.min.js" },
-            { history : "/js/jquery.history.js" },
-            { stringLib : "/js/core.string.js" },
-            { easing : "/js/jquery.easing.1.3.js" },
-            { smartresize : "/js/jquery.smartresize.js" },
-            { page : "/js/jquery.page.js" }
+            {mousewheel: "/js/jquery.mousewheel.js"},
+            {mwheelIntent: "/js/mwheelIntent.js"},
+            {jScrollPane: "/js/jquery.jscrollpane.min.js"},
+            {history: "/js/jquery.history.js"},
+            {stringLib: "/js/core.string.js"},
+            {easing: "/js/jquery.easing.1.3.js"},
+            {smartresize: "/js/jquery.smartresize.js"},
+            {page: "/js/jquery.page.js"}
         );
     </script>
     <!-- Fit Video -->
-    <script type="text/javascript"  src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
     <!-- All Javascript Component-->
     <script src="/js/settings.js"></script>
 @endsection

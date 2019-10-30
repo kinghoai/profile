@@ -46,7 +46,7 @@ class SkillController extends Controller
     public function store(Request $request)
     {
     	$request->validate([
-    	    'title' => 'required|min:5|max:40'
+    	    'title' => 'required|min:3|max:40'
 	    ]);
 	    $input = $request->all();
 	    $input['user_id'] = Auth::user()->id;
@@ -88,7 +88,7 @@ class SkillController extends Controller
     public function update(Request $request, $id)
     {
 	    $request->validate([
-		    'title' => 'required|min:5|max:40'
+		    'title' => 'required|min:3|max:40'
 	    ]);
 	    $skill = $this->skillRepository->find($id);
 	    $input = $request->all();

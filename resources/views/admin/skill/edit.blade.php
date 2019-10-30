@@ -8,6 +8,7 @@
         <div class="col-6">
             <form action="{{route('skill.update', $skill->id)}}" method="POST">
                 @csrf
+                @method('PATCH')
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{$skill->title}}">

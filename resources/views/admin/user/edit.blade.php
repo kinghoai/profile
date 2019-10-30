@@ -61,6 +61,26 @@
                     <label for="job">Job</label>
                     <input type="job" class="form-control" id="job" placeholder="Job" name="job" value="{{$user->job}}">
                 </div>
+                <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input type="facebook" class="form-control" id="facebook" placeholder="url facebook" name="facebook" value="{{$user->facebook}}">
+                </div>
+                <div class="form-group">
+                    <label for="twitter">Twitter</label>
+                    <input type="twitter" class="form-control" id="twitter" placeholder="url twitter" name="twitter" value="{{$user->twitter}}">
+                </div>
+                <div class="form-group">
+                    <label for="youtube">Youtube</label>
+                    <input type="youtube" class="form-control" id="youtube" placeholder="url youtube" name="youtube" value="{{$user->youtube}}">
+                </div>
+                <div class="form-group">
+                    <label for="google">Google Plus</label>
+                    <input type="google" class="form-control" id="google" placeholder="url google" name="google" value="{{$user->google}}">
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="linkedin" class="form-control" id="linkedin" placeholder="url linkedin" name="linkedin" value="{{$user->linkedin}}">
+                </div>
             </div>
             </div>
             <div class="col-12">

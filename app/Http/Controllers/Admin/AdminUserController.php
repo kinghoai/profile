@@ -109,7 +109,7 @@ class AdminUserController extends Controller
 	    ]);
 	    $input = $request->all();
 	    $input['password'] = bcrypt($request->password);
-	    $input['slug'] = Str::slug('name');
+	    $input['slug'] = Str::slug($input['name']) == $user->slug ? $user->slug : Str::slug($input['name']);
 	    $this->userRepository->update($user, $input);
 	    return redirect(route('user.index'))->with('messenger', 'Edit success');
     }
