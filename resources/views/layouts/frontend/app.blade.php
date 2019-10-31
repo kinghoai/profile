@@ -19,6 +19,7 @@
     @include('layouts.frontend._leftmenu')
     @yield('content')
 </div>
+
 @yield('scripts')
 
 </body>
