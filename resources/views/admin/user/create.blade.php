@@ -42,9 +42,10 @@
                         <label for="userAvatar">File input</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="userAvatar">
+                                <input type="file" class="custom-file-input" id="userAvatar" name="image">
                                 <label class="custom-file-label" for="exampleInputFile">Choose avatar</label>
                             </div>
+                            <div class="show-file"></div>
                         </div>
                     </div>
                     <div class="form-check">
@@ -57,4 +58,24 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.show-file').html('<img style="width: 50%; margin-top: 10px" src=' + e.target.result + '>');
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#userAvatar").change(function(){
+            readURL(this);
+        });
+    </script>
 @endsection

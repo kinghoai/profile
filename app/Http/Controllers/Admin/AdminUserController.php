@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class AdminUserController extends Controller
 {
@@ -51,12 +53,16 @@ class AdminUserController extends Controller
 		    'email'=>'required|unique:users|min:5|max:50',
 		    'password'=>'required|min:5|max:50',
 		    'retypepassword'=>'required|same:password|min:5|max:50',
+		    'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
 	    ]);
 
 	    $input = $request->all();
 	    $input['password'] = bcrypt($request->password);
 	    $input['slug'] = Str::slug('name');
-	    $this->userRepository->create($input);
+	    $user = $this->userRepository->create($input);
+	    if ($request->hasFile('image')) {
+		    $user->addMediaFromRequest('image')->toMediaCollection('image');
+	    };
 	    return redirect(route('user.index'))->with('messenger', 'Create success');
     }
 
@@ -115,6 +121,9 @@ class AdminUserController extends Controller
 	    };
 	    $input['slug'] = Str::slug($input['name']) == $user->slug ? $user->slug : Str::slug($input['name']);
 	    $this->userRepository->update($user, $input);
+	    if ($request->hasFile('image')) {
+		    $user->addMediaFromRequest('image')->toMediaCollection('image');
+	    };
 	    return redirect(route('user.index'))->with('messenger', 'Edit success');
     }
 

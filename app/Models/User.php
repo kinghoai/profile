@@ -5,10 +5,21 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
+	use HasMediaTrait;
     use Notifiable;
+
+	public function registerMediaConversions(Media $media = null)
+	{
+		$this->addMediaConversion('thumb')
+			->width(180)
+			->height(180);
+	}
 
     /**
      * The attributes that are mass assignable.
