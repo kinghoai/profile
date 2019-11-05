@@ -33,9 +33,11 @@
                             {{$user->name}}</h2>
                         <span class="title">{{$user->job}}</span></div>
                     <div id="owl-demo" class="owl-carousel">
-                        <div class="item"><img src="/image/profile.jpg" alt=""/></div>
-                        <div class="item"><img src="/image/profile-01.jpg" alt=""/></div>
-                        <div class="item"><img src="/image/profile-02.jpg" alt=""/></div>
+                        @if(!empty($slides))
+                            @foreach($slides as $slide)
+                                <div class="item"><img src="{{$slide->getUrl('slide')}}" alt=""/></div>
+                            @endforeach
+                        @endif
                     </div>
                 </article>
 
@@ -332,15 +334,6 @@
                 <!-- Introduction -->
                 <article class="content introduction-end" id="chapterthankyou">
                     <div class="inner">
-                        <div class="introduction-end-con margin-top50">
-                            <h3><strong>Andrew Smith</strong></h3>
-                            <div id="rotate" class="rotate">
-                                <div><span>awesome.</span></div>
-                                <div><span>invincible.</span></div>
-                                <div><span>unbeatable.</span></div>
-                                <div><span>indestructible.</span></div>
-                            </div>
-                        </div>
                     </div>
                 </article>
             </div>

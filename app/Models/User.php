@@ -19,11 +19,17 @@ class User extends Authenticatable implements HasMedia
     	return $this->getMedia('image')->last();
     }
 
+	public function getSlideAttribute()
+	{
+		return $this->getMedia('slide');
+	}
+
 	public function registerMediaConversions(Media $media = null)
 	{
 		$this->addMediaConversion('thumb')
-			->width(180)
-			->height(180);
+			->crop('crop-center', 200, 200);
+		$this->addMediaConversion('slide')
+			->crop('crop-center', 1000, 1232);
 	}
 
     /**

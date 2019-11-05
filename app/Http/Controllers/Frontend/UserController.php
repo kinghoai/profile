@@ -42,8 +42,10 @@ class UserController extends Controller
     	$experiences = $this->experienceRepository->getByAttributes(['user_id'=>$user->id]);
     	$educations = $this->educationRepository->getByAttributes(['user_id'=>$user->id]);
     	$projects = $this->projectRepository->getByAttributes(['user_id'=>$user->id]);
+    	$slides = $user->getMedia('slide') ? $user->getMedia('slide') : '';
+	    $thumb = $user->getMedia('image')->last() ? $user->getMedia('image')->last()->getUrl('thumb') : '';
         return view('frontend.user.show', compact(
-        	'user', 'knowledgeSkills', 'experiences', 'educations', 'projects', 'skillSkills', 'languageSkills'
+        	'user', 'knowledgeSkills', 'experiences', 'educations', 'projects', 'skillSkills', 'languageSkills', 'slides', 'thumb'
         ));
     }
 }

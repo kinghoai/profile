@@ -19,4 +19,4 @@ Route::get('/profile/{slug}', 'Frontend\UserController@show')->name('user.showpr
 
 //post
 Route::get('/blog','Frontend\PostController@index')->name('frontend.post.index');
-//Route::get('/blog/{slug}','Frontend\PostController@show')->name('frontend.post.show');
+Route::get('/blog/{slug}','Frontend\PostController@show')->name('frontend.post.show');
