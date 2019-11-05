@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('user.showprofile', 'lam-thanh-hoai');
 });
 //route show user CV
 Route::get('/profile/{slug}', 'Frontend\UserController@show')->name('user.showprofile');

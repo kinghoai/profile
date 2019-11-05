@@ -24,6 +24,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>Thumb</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -32,6 +33,11 @@
                         <tbody>
                         @foreach($users as $user )
                             <tr>
+                                <td>
+                                    @if($user->image)
+                                        <img src="{{$user->image->getUrl('thumb')}}" width="50px">
+                                    @endif
+                                </td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->phone}}</td>

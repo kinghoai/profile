@@ -14,6 +14,11 @@ class User extends Authenticatable implements HasMedia
 	use HasMediaTrait;
     use Notifiable;
 
+    public function getImageAttribute()
+    {
+    	return $this->getMedia('image')->last();
+    }
+
 	public function registerMediaConversions(Media $media = null)
 	{
 		$this->addMediaConversion('thumb')

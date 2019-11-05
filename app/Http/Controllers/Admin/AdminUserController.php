@@ -124,6 +124,12 @@ class AdminUserController extends Controller
 	    if ($request->hasFile('image')) {
 		    $user->addMediaFromRequest('image')->toMediaCollection('image');
 	    };
+	    if ($request->hasFile('slide')) {
+	    	$files = $request->file('slide');
+		    foreach ($files as $item) {
+			    $user->addMedia($item)->toMediaCollection('slide');
+		    }
+	    };
 	    return redirect(route('user.index'))->with('messenger', 'Edit success');
     }
 
