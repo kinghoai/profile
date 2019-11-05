@@ -21,7 +21,7 @@
         <a href="#chapterabout">
             <span id="link_about">About</span>
         </a>
-        <a href="{{route('user.showprofile', )}}"><span id="link_skills">Skills</span></a>
+        <a href="#chapterskills"><span id="link_skills">Skills</span></a>
         <a href="#chapterexperience"><span id="link_experience">Experience</span></a>
         <a href="#chaptereducation"><span id="link_education">Education</span></a>
         <a href="#chapterportfolio"><span id="link_portfolio">Portfolio</span></a>
