@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
@@ -84,7 +85,10 @@ class AdminUserController extends Controller
     public function edit($id)
     {
     	$user = $this->userRepository->find($id);
-        return view('admin.user.edit', compact('user'));
+    	if($id == Auth::user()->id || Auth::user()->id == 1) {
+		    return view('admin.user.edit', compact('user'));
+	    } else return redirect(route('admin'));
+
     }
 
     /**
@@ -97,38 +101,40 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
 	    $user = $this->userRepository->find($id);
-	    $request->validate([
-		    'name'=>[
-		    	'required',
-			    Rule::unique('users')->ignore($id),
-			    'min:5',
-			    'max:50'
-		    ],
-		    'email'=>[
-			    'required',
-			    'min:5',
-			    'max:50',
-			    Rule::unique('users')->ignore($id),
-		    ]
-	    ]);
-	    $input = $request->all();
-	    if(isset($input['password']) && $input['password'] != '') {
-		    $input['password'] = bcrypt($request->password);
-	    } else {
-		    $input['password'] = $user->password;
-	    };
-	    $input['slug'] = Str::slug($input['name']) == $user->slug ? $user->slug : Str::slug($input['name']);
-	    $this->userRepository->update($user, $input);
-	    if ($request->hasFile('image')) {
-		    $user->addMediaFromRequest('image')->toMediaCollection('image');
-	    };
-	    if ($request->hasFile('slide')) {
-	    	$files = $request->file('slide');
-		    foreach ($files as $item) {
-			    $user->addMedia($item)->toMediaCollection('slide');
-		    }
-	    };
-	    return redirect(route('user.index'))->with('messenger', 'Edit success');
+	    if($id == Auth::user()->id || Auth::user()->id == 1) {
+		    $request->validate([
+			    'name'=>[
+				    'required',
+				    Rule::unique('users')->ignore($id),
+				    'min:5',
+				    'max:50'
+			    ],
+			    'email'=>[
+				    'required',
+				    'min:5',
+				    'max:50',
+				    Rule::unique('users')->ignore($id),
+			    ]
+		    ]);
+		    $input = $request->all();
+		    if(isset($input['password']) && $input['password'] != '') {
+			    $input['password'] = bcrypt($request->password);
+		    } else {
+			    $input['password'] = $user->password;
+		    };
+		    $input['slug'] = Str::slug($input['name']) == $user->slug ? $user->slug : Str::slug($input['name']);
+		    $this->userRepository->update($user, $input);
+		    if ($request->hasFile('image')) {
+			    $user->addMediaFromRequest('image')->toMediaCollection('image');
+		    };
+		    if ($request->hasFile('slide')) {
+			    $files = $request->file('slide');
+			    foreach ($files as $item) {
+				    $user->addMedia($item)->toMediaCollection('slide');
+			    }
+		    };
+		    return redirect(route('user.index'))->with('messenger', 'Edit success');
+	    } else return redirect(route('admin'));
     }
 
     /**
@@ -140,7 +146,10 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         $user = $this->userRepository->find($id);
-        $this->userRepository->destroy($user);
-	    return redirect(route('user.index'))->with('messenger', 'Delete success');
+	    if($id == Auth::user()->id || Auth::user()->id == 1) {
+		    $this->userRepository->destroy($user);
+		    return redirect(route('user.index'))->with('messenger', 'Delete success');
+	    } else return redirect(route('admin'));
+
     }
 }

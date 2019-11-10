@@ -71,7 +71,12 @@ class ExperienceController extends Controller
     public function edit($id)
     {
 	    $experience = $this->experienceRepository->find($id);
-	    return view('admin.experience.edit', compact('experience'));
+    	if($experience->user_id == Auth::user()->id) {
+		    return view('admin.experience.edit', compact('experience'));
+	    } else {
+    		return redirect(route('admin'));
+	    }
+
     }
 
     /**
@@ -84,11 +89,15 @@ class ExperienceController extends Controller
     public function update(Request $request, $id)
     {
 	    $experience = $this->experienceRepository->find($id);
-	    $input = $request->all();
-	    $input['user_id'] = Auth::user()->id;
-	    $this->experienceRepository->update($experience, $input);
+	    if($experience->user_id == Auth::user()->id) {
+		    $input = $request->all();
+		    $input['user_id'] = Auth::user()->id;
+		    $this->experienceRepository->update($experience, $input);
 
-	    return redirect(route('experience.index'))->with('messenger', 'Updated success');
+		    return redirect(route('experience.index'))->with('messenger', 'Updated success');
+	    } else {
+		    return redirect(route('admin'));
+	    }
     }
 
     /**
@@ -100,7 +109,11 @@ class ExperienceController extends Controller
     public function destroy($id)
     {
 	    $experience = $this->experienceRepository->find($id);
-	    $this->experienceRepository->destroy($experience);
-	    return redirect(route('experience.index'))->with('messenger', 'Deleted');
+	    if($experience->user_id == Auth::user()->id) {
+		    $this->experienceRepository->destroy($experience);
+		    return redirect(route('experience.index'))->with('messenger', 'Deleted');
+	    } else {
+		    return redirect(route('admin'));
+	    }
     }
 }

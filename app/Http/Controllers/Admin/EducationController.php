@@ -72,7 +72,9 @@ class EducationController extends Controller
     public function edit($id)
     {
 	    $education = $this->educationRepository->find($id);
-	    return view('admin.education.edit', compact('education'));
+	    if($education->user_id == Auth::user()->id) {
+		    return view('admin.education.edit', compact('education'));
+	    } else return redirect(route('admin'));
     }
 
     /**
@@ -85,11 +87,15 @@ class EducationController extends Controller
     public function update(Request $request, $id)
     {
 	    $education = $this->educationRepository->find($id);
-	    $input = $request->all();
-	    $input['user_id'] = Auth::user()->id;
-	    $this->educationRepository->update($education, $input);
+	    if($education->user_id == Auth::user()->id) {
+		    $input = $request->all();
+		    $input['user_id'] = Auth::user()->id;
+		    $this->educationRepository->update($education, $input);
 
-	    return redirect(route('education.index'))->with('messenger', 'Updated success');
+		    return redirect(route('education.index'))->with('messenger', 'Updated success');
+	    } else return redirect(route('admin'));
+
+
     }
 
     /**
@@ -101,7 +107,9 @@ class EducationController extends Controller
     public function destroy($id)
     {
 	    $education = $this->educationRepository->find($id);
-	    $this->educationRepository->destroy($education);
-	    return redirect(route('education.index'))->with('messenger', 'Deleted');
+	    if($education->user_id == Auth::user()->id) {
+		    $this->educationRepository->destroy($education);
+		    return redirect(route('education.index'))->with('messenger', 'Deleted');
+	    } else return redirect(route('admin'));
     }
 }

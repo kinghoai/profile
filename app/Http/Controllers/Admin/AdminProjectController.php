@@ -85,7 +85,9 @@ class AdminProjectController extends Controller
     public function edit($id)
     {
 	    $project = $this->projectRepository->find($id);
-	    return view('admin.project.edit', compact('project'));
+    	if($project->user_id == Auth::user()->id) {
+		    return view('admin.project.edit', compact('project'));
+	    } else return redirect(route('admin'));
     }
 
     /**
@@ -106,23 +108,24 @@ class AdminProjectController extends Controller
 		    ],
 		    'feature_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
 	    ]);
-	    $input = $request->all();
 	    $project = $this->projectRepository->find($id);
+	    if($project->user_id == Auth::user()->id) {
+		    $input = $request->all();
+		    $input['slug'] = Str::slug($input['title']);
+		    $input['user_id'] = Auth::user()->id;
+		    $this->projectRepository->update($project, $input);
 
-	    $input['slug'] = Str::slug($input['title']);
-	    $input['user_id'] = Auth::user()->id;
-	    $this->projectRepository->update($project, $input);
-
-	    if ($request->hasFile('image')) {
-		    $project->addMediaFromRequest('image')->toMediaCollection('image');
-	    };
-	    if ($request->hasFile('slide')) {
-		    $files = $request->file('slide');
-		    foreach ($files as $item) {
-			    $project->addMedia($item)->toMediaCollection('slide');
-		    }
-	    };
-	    return redirect(route('project.index'))->with('messenger', 'Edited');
+		    if ($request->hasFile('image')) {
+			    $project->addMediaFromRequest('image')->toMediaCollection('image');
+		    };
+		    if ($request->hasFile('slide')) {
+			    $files = $request->file('slide');
+			    foreach ($files as $item) {
+				    $project->addMedia($item)->toMediaCollection('slide');
+			    }
+		    };
+		    return redirect(route('project.index'))->with('messenger', 'Edited');
+	    } else return redirect(route('admin'));
     }
 
     /**
@@ -134,7 +137,10 @@ class AdminProjectController extends Controller
     public function destroy($id)
     {
 	    $project = $this->projectRepository->find($id);
-	    $this->projectRepository->destroy($project);
-	    return redirect(route('project.index'))->with('messenger', 'Deleted');
+	    if($project->user_id == Auth::user()->id) {
+		    $this->projectRepository->destroy($project);
+		    return redirect(route('project.index'))->with('messenger', 'Deleted');
+	    } else return redirect(route('admin'));
+
     }
 }
