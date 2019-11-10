@@ -47,12 +47,21 @@ class AdminProjectController extends Controller
     {
 	    $request->validate([
 		    'title'=>'required|unique:projects|min:10|max:100',
+		    'feature_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
 	    ]);
 	    $input = $request->all();
 	    $input['slug'] = Str::slug($input['title']);
 	    $input['user_id'] = Auth::user()->id;
-	    $this->projectRepository->create($input);
-
+	    $project = $this->projectRepository->create($input);
+	    if($request->hasFile('image')) {
+		    $project->addMediaFromRequest('image')->toMediaCollection('image');
+	    }
+	    if ($request->hasFile('slide')) {
+		    $files = $request->file('slide');
+		    foreach ($files as $item) {
+			    $project->addMedia($item)->toMediaCollection('slide');
+		    }
+	    };
 	    return redirect(route('project.index'))->with('messenger', 'Created');
     }
 
@@ -94,14 +103,25 @@ class AdminProjectController extends Controller
 			    'min:10',
 			    'max:100',
 			    Rule::unique('projects')->ignore($id)
-		    ]
+		    ],
+		    'feature_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
 	    ]);
 	    $input = $request->all();
 	    $project = $this->projectRepository->find($id);
+
 	    $input['slug'] = Str::slug($input['title']);
 	    $input['user_id'] = Auth::user()->id;
 	    $this->projectRepository->update($project, $input);
 
+	    if ($request->hasFile('image')) {
+		    $project->addMediaFromRequest('image')->toMediaCollection('image');
+	    };
+	    if ($request->hasFile('slide')) {
+		    $files = $request->file('slide');
+		    foreach ($files as $item) {
+			    $project->addMedia($item)->toMediaCollection('slide');
+		    }
+	    };
 	    return redirect(route('project.index'))->with('messenger', 'Edited');
     }
 

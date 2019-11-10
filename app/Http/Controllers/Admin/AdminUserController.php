@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class AdminUserController extends Controller
 {

@@ -28,9 +28,19 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="userAvatar" name="feature_image">
-                            <label class="custom-file-label" for="exampleInputFile">Feature Image</label>
+                            <input type="file" class="custom-file-input" id="userAvatar" name="image">
+                            <label class="custom-file-label" for="userAvatar">Feature Image</label>
                         </div>
+                        <div class="show-featured"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="slide" name="slide[]" multiple>
+                            <label class="custom-file-label" for="slide">Slide Image</label>
+                        </div>
+                        <div class="show-slide"></div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4">Save project</button>
@@ -38,3 +48,20 @@
         </div>
     </form>
 @endsection
+@section('scripts')
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.show-featured').html('<img style="width: 50%; margin-top: 10px" src=' + e.target.result + '>');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#userAvatar").change(function(){
+            readURL(this);
+        });
+    </script>
+@endsection
+

@@ -141,15 +141,12 @@
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
                 reader.onload = function (e) {
                     $('.show-avatar').html('<img style="width: 50%; margin-top: 10px" src=' + e.target.result + '>');
                 }
-
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         $("#userAvatar").change(function(){
             readURL(this);
         });
