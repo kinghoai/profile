@@ -22,7 +22,7 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        $experiences = $this->experienceRepository->all();
+        $experiences = $this->experienceRepository->getByAttributes(['user_id'=>Auth::user()->id]);
         return view('admin.experience.index', compact('experiences'));
     }
 

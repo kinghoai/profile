@@ -23,7 +23,7 @@ class AdminProjectController extends Controller
      */
     public function index()
     {
-	    $projects = $this->projectRepository->all();
+	    $projects = $this->projectRepository->getByAttributes(['user_id'=>Auth::user()->id]);
 	    return view('admin.project.index', compact('projects'));
     }
 

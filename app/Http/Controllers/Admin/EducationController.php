@@ -22,7 +22,8 @@ class EducationController extends Controller
      */
     public function index()
     {
-	    $educations = $this->educationRepository->all();
+
+	    $educations = $this->educationRepository->getByAttributes(['user_id'=>Auth::user()->id]);
 	    return view('admin.education.index', compact('educations'));
     }
 

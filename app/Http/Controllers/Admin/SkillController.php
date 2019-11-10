@@ -23,7 +23,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-    	$skills = $this->skillRepository->all();
+    	$skills = $this->skillRepository->getByAttributes(['user_id'=>Auth::user()->id]);
         return view('admin.skill.index', compact('skills'));
     }
 

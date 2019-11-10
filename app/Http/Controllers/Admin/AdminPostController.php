@@ -24,7 +24,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-    	$posts = $this->postRepository->all();
+    	$posts = $this->postRepository->getByAttributes(['user_id'=>Auth::user()->id]);
         return view('admin.post.index', compact('posts'));
     }
 

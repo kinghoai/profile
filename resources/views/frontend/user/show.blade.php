@@ -200,7 +200,7 @@
                                             <ul class="grid">
                                                 @foreach($projects as $project)
                                                 <li>
-                                                    <figure><img src="/image/work1.jpg" alt=""/>
+                                                    <figure><img src="{{$project->featured}}" alt="{{$project->title}}"/>
                                                         <figcaption>
                                                             <div class="figcaption-details"><img
                                                                     src="/image/icon-plus.png" height="82" width="82"
@@ -222,14 +222,13 @@
                                                     <figure>
                                                         <figcaption>
                                                             <h3>{{$project->title}}</h3>
-                                                            <p>{{$project->description}}.</p>
+                                                            <p>{{$project->content}}</p>
                                                         </figcaption>
                                                         <div id="owl-demo1" class="owl-carousel">
-                                                            <div class="item"><img src="/image/work-details1.jpg" alt=""/></div>
-                                                            {{--<div class="item"><img src="/image/work-details2.jpg" alt=""/></div>--}}
-                                                            {{--<div class="item"><img src="/image/work-details3.jpg" alt=""/></div>--}}
-                                                            {{--<div class="item"><img src="/image/work-details4.jpg" alt=""/></div>--}}
-                                                            {{--<div class="item"><img src="/image/work-details5.jpg" alt=""/></div>--}}
+                                                            <div class="item"><img src="{{$project->featured}}" alt="{{$project->title}}"/></div>
+                                                            @foreach($project->slide as $slide)
+                                                                <div class="item"><img src="{{$slide->getUrl('slide')}}" alt="{{$project->title}}"/></div>
+                                                            @endforeach
                                                         </div>
                                                     </figure>
                                                 </li>
