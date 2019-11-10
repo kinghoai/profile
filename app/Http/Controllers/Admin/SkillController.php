@@ -75,7 +75,11 @@ class SkillController extends Controller
     public function edit($id)
     {
     	$skill = $this->skillRepository->find($id);
-		return view('admin.skill.edit', compact('skill'));
+    	if($skill->user_id == Auth::user()->id) {
+		    return view('admin.skill.edit', compact('skill'));
+	    } else {
+    		return redirect(route('admin'));
+	    }
     }
 
     /**
@@ -91,11 +95,16 @@ class SkillController extends Controller
 		    'title' => 'required|min:3|max:40'
 	    ]);
 	    $skill = $this->skillRepository->find($id);
-	    $input = $request->all();
-	    $input['user_id'] = Auth::user()->id;
-	    $this->skillRepository->update($skill, $input);
+	    if($skill->user_id == Auth::user()->id) {
+		    $input = $request->all();
+		    $input['user_id'] = Auth::user()->id;
+		    $this->skillRepository->update($skill, $input);
 
-	    return redirect(route('skill.index'))->with('messenger', 'Updated success');
+		    return redirect(route('skill.index'))->with('messenger', 'Updated success');
+	    } else {
+		    return redirect(route('admin'));
+	    }
+
     }
 
     /**
@@ -107,7 +116,12 @@ class SkillController extends Controller
     public function destroy($id)
     {
 	    $skill = $this->skillRepository->find($id);
-	    $this->skillRepository->destroy($skill);
-	    return redirect(route('skill.index'))->with('messenger', 'Deleted');
+	    if($skill->user_id == Auth::user()->id) {
+		    $this->skillRepository->destroy($skill);
+		    return redirect(route('skill.index'))->with('messenger', 'Deleted');
+	    } else {
+		    return redirect(route('admin'));
+	    }
+
     }
 }
