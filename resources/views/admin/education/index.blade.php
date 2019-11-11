@@ -19,23 +19,23 @@
                 @csrf
                 <div class="form-group">
                     <label for="icon">Icon</label>
-                    <input type="text" class="form-control" id="icon" name="icon" placeholder="icon tag fontawesome...">
+                    <input type="text" class="form-control" id="icon" name="icon" placeholder="icon tag fontawesome..." required>
                 </div>
                 <div class="form-group">
                     <label for="school">School</label>
-                    <input type="text" class="form-control" id="school" name="school" placeholder="school name...">
+                    <input type="text" class="form-control" id="school" name="school" placeholder="school name..." required>
                 </div>
                 <div class="form-group">
                     <label for="subjects">Subjects</label>
-                    <input type="text" class="form-control" id="subjects" name="subjects" placeholder="subjects">
+                    <input type="text" class="form-control" id="subjects" name="subjects" placeholder="subjects" required>
                 </div>
                 <div class="form-group">
                     <label for="level">Timeline</label>
-                    <input type="text" class="form-control" id="time" name="time" placeholder="2015-2017">
+                    <input type="text" class="form-control" id="time" name="time" placeholder="2015-2017" required>
                 </div>
                 <div class="form-group">
                     <label for="level">Description</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <textarea class="form-control" id="description" name="description" required></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add New Education</button>

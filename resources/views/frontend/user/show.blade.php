@@ -48,14 +48,14 @@
                         <div class="title-divider"></div>
                         <div class="about-con">
                             <ul>
-                                <li>Name: {{$user->name}}.</li>
-                                <li>Email: <a href="mailto:andrew@gmail.com">{{$user->email}}.</a></li>
-                                <li>Phone: {{$user->email}}.</li>
-                                <li>Date of birth: {{$user->birthday}}.</li>
-                                <li>Address: {{$user->address}}.</li>
+                                <li>Name: {{$user->name}}</li>
+                                <li>Email: <a href="mailto:andrew@gmail.com">{{$user->email}}</a></li>
+                                <li>Phone: {{$user->email}}</li>
+                                <li>Date of birth: {{$user->birthday}}</li>
+                                <li>Address: {{$user->address}}</li>
                             </ul>
                             <h3>Professional Profile</h3>
-                            <p>{{$user->about_description}}.<br>
+                            <p>{{$user->about_description}}<br>
                             </p>
                             {{--<a href="#" class="button">Download resume as PDF format</a> <img src="/image/signature.jpg"--}}
                                                                                               {{--class="signature" alt=""/>--}}
@@ -69,7 +69,7 @@
                         <h2>Skills</h2>
                         <div class="title-divider"></div>
                         <h3>Just My Awesome Skills</h3>
-                        <p>{{$user->skill_description}}.</p>
+                        <p>{{$user->skill_description}}</p>
                         <div class="skills-con">
                             <div class="container-sub margin-top50">
                                 <div class="row">
@@ -92,7 +92,7 @@
                             <div class="container-sub skill-list">
                                 <div class="row">
                                     <h3>Knowledge</h3>
-                                    <p>{{$user->knowledge_description}}.</p>
+                                    <p>{{$user->knowledge_description}}</p>
                                     @foreach($knowledgeSkills as $knowledgeSkill)
                                     <div class="col-4 margin-top10">
                                         <ul>
@@ -106,7 +106,7 @@
                             <div class="container-sub">
                                 <div class="row">
                                     <h3>Language Skills</h3>
-                                    <p>{{$user->language_description}}.</p>
+                                    <p>{{$user->language_description}}</p>
                                     @foreach($languageSkills as $languageSkill)
                                     <div class="progressbar-main margin-top50">
                                         <div class="progress-bar-description">{{$languageSkill->title}}</div>
@@ -127,21 +127,24 @@
                         <h2>Experience</h2>
                         <div class="title-divider"></div>
                         <h3>My Experience!</h3>
-                        <p>{{$user->experience_description}}.</p>
+                        <p>{{$user->experience_description}}</p>
                         <div class="experience-con">
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
                                     @foreach($experiences as $experience)
                                     <div class="experience-details" style="width: 100%">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block">{!! $experience->icon ? $experience->icon : '<i class="fa fa-send-o"></i>'!!}</div>
-                                            <div class="flot-left">
-                                                <h5>{{$experience->company}}</h5>
-                                                <h4>{{$experience->job}}</h4>
-                                                <span>{{$experience->time}}</span></div>
+                                        <div class="col-7 margin-bottom50 margin-top50">
+                                            <div class="row">
+                                                <div class="col-3 icon-block">{!! $experience->icon ? $experience->icon : '<i class="fa fa-send-o"></i>'!!}</div>
+                                                <div class="col-8 flot-left">
+                                                    <h5>{{$experience->company}}</h5>
+                                                    <h4>{{$experience->job}}</h4>
+                                                    <span>{{$experience->time}}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top">
+                                        <div class="col-5 margin-bottom50 margin-top50 no-margin-top">
                                             {{$experience->description}}
                                         </div>
                                     </div>
@@ -159,22 +162,25 @@
                         <h2>Education</h2>
                         <div class="title-divider"></div>
                         <h3>Just My Education</h3>
-                        <p>{{$user->education_description}}.</p>
+                        <p>{{$user->education_description}}</p>
                         <div class="education-con">
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
                                     @foreach($educations as $education)
                                     <div class="education-details" style="width: 100%">
-                                        <div class="col-6 margin-bottom50 margin-top50">
-                                            <div class="col-3 icon-block">{!! $education->icon ? $education->icon : '<i class="fa fa-laptop"></i>' !!}</div>
-                                            <div class="flot-left">
-                                                <h5>{{$education->school}}</h5>
-                                                <h4>{{$education->subjects}}</h4>
-                                                <span>{{$education->time}}</span></div>
+                                        <div class="col-7 margin-bottom50 margin-top50">
+                                            <div class="row">
+                                                <div class="col-3 icon-block">{!! $education->icon ? $education->icon : '<i class="fa fa-laptop"></i>' !!}</div>
+                                                <div class="col-8 flot-left">
+                                                    <h5>{{$education->school}}</h5>
+                                                    <h4>{{$education->subjects}}</h4>
+                                                    <span>{{$education->time}}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top">
-                                            {{$education->description}}.
+                                        <div class="col-5 margin-bottom50 margin-top50 no-margin-top">
+                                            {{$education->description}}
                                         </div>
                                     </div>
                                     <div class="full-divider"></div>
@@ -191,7 +197,7 @@
                         <h2>Portfolio</h2>
                         <div class="title-divider"></div>
                         <h3>Our portfolio features a variety of projects and services</h3>
-                        <p>{{$user->project_description}}.</p>
+                        <p>{{$user->project_description}}</p>
                         <div class="portfolio-con">
                             <div class="container-sub margin-top50">
                                 <div class="row">
@@ -250,7 +256,7 @@
                         <h2>Contact</h2>
                         <div class="title-divider"></div>
                         <h3>Let's Keep In Touch</h3>
-                        <p>{{$user->contact_description}}.</p>
+                        <p>{{$user->contact_description}}</p>
                         <div class="full-divider"></div>
                         <div class="contact-con margin-top50">
                             <div class="container-sub">
@@ -261,7 +267,7 @@
                                                 <div class="col-2 icon-block address"><i class="fa fa-map-marker"></i>
                                                 </div>
                                                 <div class="flot-left"><strong>{{$user->name}}</strong><br>
-                                                    {{$user->address}}.
+                                                    {{$user->address}}
                                                 </div>
                                             </div>
                                             <div class="contact-text">

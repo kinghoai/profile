@@ -20,23 +20,23 @@
                 @method('PATCH')
                 <div class="form-group">
                     <label for="icon">Icon</label>
-                    <input type="text" class="form-control" id="icon" name="icon" value="{{$education->icon}}">
+                    <input type="text" class="form-control" id="icon" name="icon" value="{{$education->icon}}" required>
                 </div>
                 <div class="form-group">
                     <label for="school">School</label>
-                    <input type="text" class="form-control" id="school" name="school" value="{{$education->school}}">
+                    <input type="text" class="form-control" id="school" name="school" value="{{$education->school}}" required>
                 </div>
                 <div class="form-group">
                     <label for="subjects">Subjects</label>
-                    <input type="text" class="form-control" id="subjects" name="subjects" value="{{$education->subjects}}">
+                    <input type="text" class="form-control" id="subjects" name="subjects" value="{{$education->subjects}}" required>
                 </div>
                 <div class="form-group">
                     <label for="level">Time</label>
-                    <input type="text" class="form-control" id="time" name="time" value="{{$education->time}}">
+                    <input type="text" class="form-control" id="time" name="time" value="{{$education->time}}" required>
                 </div>
                 <div class="form-group">
                     <label for="level">Description</label>
-                    <textarea class="form-control" id="description" name="description">{{$education->description}}</textarea>
+                    <textarea class="form-control" id="description" name="description" required>{{$education->description}}</textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Edit Education</button>

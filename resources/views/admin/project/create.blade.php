@@ -38,7 +38,7 @@
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="slide" name="slide[]" multiple>
-                            <label class="custom-file-label" for="slide">Slide Image</label>
+                            <label class="custom-file-label" for="slide">Slide Images</label>
                         </div>
                         <div class="show-slide"></div>
                     </div>
@@ -61,6 +61,30 @@
         }
         $("#userAvatar").change(function(){
             readURL(this);
+        });
+        $(function() {
+            // Multiple images preview in browser
+            var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img class="w-50" style="height: 100px; object-fit: cover">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#slide').on('change', function() {
+                imagesPreview(this, '.show-slide');
+            });
         });
     </script>
 @endsection

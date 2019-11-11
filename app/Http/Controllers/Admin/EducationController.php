@@ -45,6 +45,11 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'school' => 'required|min:5|max:255',
+            'subjects' => 'required|min:5|max:255',
+            'description' => 'required|min:5|max:255'
+        ]);
 	    $input = $request->all();
 	    $input['user_id'] = Auth::user()->id;
 	    $this->educationRepository->create($input);

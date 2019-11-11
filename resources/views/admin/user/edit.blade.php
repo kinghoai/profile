@@ -36,7 +36,7 @@
                     <input type="password" class="form-control" id="retypepassword" placeholder="Password" name="retypepassword">
                 </div>
                 <div class="form-group">
-                    <label for="userAvatar">File input</label>
+                    <label for="userAvatar">Choose Avatar</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="userAvatar" name="image">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="userAvatar">File input</label>
+                    <label for="userAvatar">Choose slides (many)</label>
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="userSlide" name="slide[]" multiple>
@@ -149,6 +149,31 @@
         }
         $("#userAvatar").change(function(){
             readURL(this);
+        });
+
+        $(function() {
+            // Multiple images preview in browser
+            var imagesPreview = function(input, placeToInsertImagePreview) {
+
+                if (input.files) {
+                    var filesAmount = input.files.length;
+
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img class="w-25" style="height: 100px; object-fit: cover">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                        }
+
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+
+            };
+
+            $('#userSlide').on('change', function() {
+                imagesPreview(this, '.show-slide');
+            });
         });
     </script>
 @endsection
