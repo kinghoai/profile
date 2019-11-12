@@ -169,17 +169,15 @@
                                 <div class="row">
                                     @foreach($educations as $education)
                                     <div class="education-details" style="width: 100%">
-                                        <div class="col-7 margin-bottom50 margin-top50">
-                                            <div class="row">
+                                        <div class="col-6 margin-bottom50 margin-top50">
                                                 <div class="col-3 icon-block">{!! $education->icon ? $education->icon : '<i class="fa fa-laptop"></i>' !!}</div>
                                                 <div class="col-8 flot-left">
                                                     <h5>{{$education->school}}</h5>
                                                     <h4>{{$education->subjects}}</h4>
                                                     <span>{{$education->time}}</span>
                                                 </div>
-                                            </div>
                                         </div>
-                                        <div class="col-5 margin-bottom50 margin-top50 no-margin-top">
+                                        <div class="col-6 margin-bottom50 margin-top50 no-margin-top">
                                             {{$education->description}}
                                         </div>
                                     </div>
