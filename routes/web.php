@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('user.showprofile', 'lam-thanh-hoai');
-});
+Route::get('/', 'Frontend\UserController@showHome');
 //route show user CV
 Route::get('/profile/{slug}', 'Frontend\UserController@show')->name('user.showprofile');
 
