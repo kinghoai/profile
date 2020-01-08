@@ -50,7 +50,7 @@
                             <ul>
                                 <li>Name: {{$user->name}}</li>
                                 <li>Email: <a href="mailto:andrew@gmail.com">{{$user->email}}</a></li>
-                                <li>Phone: {{$user->email}}</li>
+                                <li>Phone: {{$user->phone}}</li>
                                 <li>Date of birth: {{$user->birthday}}</li>
                                 <li>Address: {{$user->address}}</li>
                             </ul>
