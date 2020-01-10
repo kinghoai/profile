@@ -1312,3 +1312,7 @@ iframe, embed, object {
 .buy-theme span {padding:0 28px; position: relative; top:0; opacity: 0}
 .buy-theme:hover span {opacity: 1}
 .buy-theme a { color: #fff; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding:8px 15px; display: block }
+
+.owl-theme .owl-controls .owl-page span {
+    background-color: #000;
+}
