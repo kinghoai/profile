@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="080c973e-420a-4598-b0d6-6fbbd0811c50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,10 +18,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/frontend/user/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="163" column="45" lean-forward="true" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
+            <state relative-caret-position="131">
+              <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
               <folding>
-                <marker date="1581500475804" expanded="true" signature="19105:20351" ph="..." />
+                <marker date="1581501295203" expanded="true" signature="18951:20197" ph="..." />
               </folding>
             </state>
           </provider>
@@ -41,6 +40,7 @@
     <findStrings>
       <find>Our portfolio features a variety of projects and services</find>
       <find>Drop Me a Line</find>
+      <find>images</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -250,18 +250,18 @@
       <workItem from="1578886673301" duration="648000" />
       <workItem from="1578901301676" duration="44000" />
       <workItem from="1581313966790" duration="1854000" />
-      <workItem from="1581485829395" duration="684000" />
+      <workItem from="1581485829395" duration="1213000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6959000" />
+    <option name="totallyTimeSpent" value="7488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="799" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19957082" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19957082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -276,7 +276,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2446959" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2446959" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -359,10 +359,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/frontend/user/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="163" column="45" lean-forward="true" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
+        <state relative-caret-position="131">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
           <folding>
-            <marker date="1581500475804" expanded="true" signature="19105:20351" ph="..." />
+            <marker date="1581501295203" expanded="true" signature="18951:20197" ph="..." />
           </folding>
         </state>
       </provider>

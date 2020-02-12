@@ -57,8 +57,7 @@
                             <h3>Professional Profile</h3>
                             <p>{{$user->about_description}}<br>
                             </p>
-                            {{--<a href="#" class="button">Download resume as PDF format</a> <img src="/image/signature.jpg"--}}
-                                                                                              {{--class="signature" alt=""/>--}}
+                            <a href="/lamthanhhoai.pdf" class="button" download>Download PDF resume</a>
                         </div>
                     </div>
                 </article>
