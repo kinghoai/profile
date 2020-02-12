@@ -161,7 +161,7 @@
                     <div class="inner">
                         <h2>Education</h2>
                         <div class="title-divider"></div>
-                        <h3>Just My Education</h3>
+                        <h3>My Education</h3>
                         <p>{{$user->education_description}}</p>
                         <div class="education-con">
                             <div class="container-sub">
@@ -192,9 +192,9 @@
                 <!-- Project -->
                 <article class="content portfolio white-bg" id="chapterportfolio">
                     <div class="inner">
-                        <h2>Portfolio</h2>
+                        <h2>Projects</h2>
                         <div class="title-divider"></div>
-                        <h3>Our portfolio features a variety of projects and services</h3>
+                        <h3>Some of my projects</h3>
                         <p>{{$user->project_description}}</p>
                         <div class="portfolio-con">
                             <div class="container-sub margin-top50">
@@ -314,22 +314,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="full-divider"></div>
-                            <div class="container-sub">
-                                <div class="row">
-                                    <div class="contact-form">
-                                        <h3>Drop Me a Line</h3>
-                                        <form id="form1" name="form1" method="post">
-                                            <input name="name" type="text" id="name" placeholder="Your Name..."/>
-                                            <input name="email" type="text" id="email" placeholder="Your Email..."/>
-                                            <textarea name="message" id="message" cols="45" rows="5"
-                                                      placeholder="Your Message..."></textarea>
-                                            <input type="submit" name="button" id="button" value="say hello!">
-                                            <div id="successmsg"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            {{--<div class="full-divider"></div>--}}
+                            {{--<div class="container-sub">--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="contact-form">--}}
+                                        {{--<h3>Drop Me a Line</h3>--}}
+                                        {{--<form id="form1" name="form1" method="post">--}}
+                                            {{--<input name="name" type="text" id="name" placeholder="Your Name..."/>--}}
+                                            {{--<input name="email" type="text" id="email" placeholder="Your Email..."/>--}}
+                                            {{--<textarea name="message" id="message" cols="45" rows="5"--}}
+                                                      {{--placeholder="Your Message..."></textarea>--}}
+                                            {{--<input type="submit" name="button" id="button" value="say hello!">--}}
+                                            {{--<div id="successmsg"></div>--}}
+                                        {{--</form>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </article>
