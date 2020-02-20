@@ -21,6 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+//Auto load để load các class đăng ký trong vendor giúp không cần phải required từng class
 require __DIR__.'/../vendor/autoload.php';
 
 /*

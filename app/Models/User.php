@@ -58,4 +58,24 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function skills()
+    {
+    	return $this->hasMany('App\Models\Skill');
+    }
+
+	public function projects()
+	{
+		return $this->hasMany('App\Models\Project');
+	}
+
+	public function experiences()
+	{
+		return $this->hasMany('App\Models\Experience');
+	}
+
+	public function educations()
+	{
+		return $this->hasMany('App\Models\Education');
+	}
 }

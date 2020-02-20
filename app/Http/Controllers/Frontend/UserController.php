@@ -32,45 +32,35 @@ class UserController extends Controller
 		$this->projectRepository = $projectRepository;
 	}
 
-	public function show($slug)
-    {
-    	$user = $this->userRepository->findBySlug($slug);
-	    if(!$user) {abort(404);}
-    	$knowledgeSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'knowledge']);
-    	$skillSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'skill']);
-    	$languageSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'language']);
-    	$experiences = $this->experienceRepository->getByAttributes(['user_id'=>$user->id]);
-    	$educations = $this->educationRepository->getByAttributes(['user_id'=>$user->id]);
-    	$projects = $this->projectRepository->getByAttributes(['user_id'=>$user->id]);
-    	foreach ($projects as $key=>$project) {
-		    $project['featured'] = $project->getMedia('image')->last() ? $project->getMedia('image')->last()->getUrl('slide'):'';
-		    $project['slide'] = $project->getMedia('slide') ? $project->getMedia('slide') : [];
-	    }
-    	$slides = $user->getMedia('slide') ? $user->getMedia('slide') : '';
-	    $thumb = $user->getMedia('image')->last() ? $user->getMedia('image')->last()->getUrl('thumb') : '';
-        return view('frontend.user.show', compact(
-        	'user', 'knowledgeSkills', 'experiences', 'educations', 'projects', 'skillSkills', 'languageSkills', 'slides', 'thumb'
-        ));
-	}
-	
 	public function showHome()
     {
-    	$user = $this->userRepository->findBySlug('lam-thanh-hoai');
-	    if(!$user) {abort(404);}
-    	$knowledgeSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'knowledge']);
-    	$skillSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'skill']);
-    	$languageSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'language']);
-    	$experiences = $this->experienceRepository->getByAttributes(['user_id'=>$user->id]);
-    	$educations = $this->educationRepository->getByAttributes(['user_id'=>$user->id]);
-    	$projects = $this->projectRepository->getByAttributes(['user_id'=>$user->id]);
-    	foreach ($projects as $key=>$project) {
-		    $project['featured'] = $project->getMedia('image')->last() ? $project->getMedia('image')->last()->getUrl('slide'):'';
+//    	$user = $this->userRepository->findBySlug('lam-thanh-hoai');
+//	    if(!$user) {abort(404);}
+//    	$knowledgeSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'knowledge']);
+//    	$skillSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'skill']);
+//    	$languageSkills = $this->skillRepository->getByAttributes(['user_id'=>$user->id, 'type'=>'language']);
+//    	$experiences = $this->experienceRepository->getByAttributes(['user_id'=>$user->id]);
+//    	$educations = $this->educationRepository->getByAttributes(['user_id'=>$user->id]);
+//    	$projects = $this->projectRepository->getByAttributes(['user_id'=>$user->id]);
+//    	foreach ($projects as $key=>$project) {
+//    		$project['featured'] = $project->getMedia('image')->last() ? $project->getMedia('image')->last()->getUrl('slide'):'';
+//		    $project['slide'] = $project->getMedia('slide') ? $project->getMedia('slide') : [];
+//	    }
+//    	$slides = $user->getMedia('slide') ? $user->getMedia('slide') : '';
+//	    $thumb = $user->getMedia('image')->last() ? $user->getMedia('image')->last()->getUrl('thumb') : '';
+//        return view('frontend.user.show', compact(
+//        	'user', 'knowledgeSkills', 'experiences', 'educations', 'projects', 'skillSkills', 'languageSkills', 'slides', 'thumb'
+//        ));
+		$user = $this->userRepository->getProfile();
+		if(!$user) {abort(404);}
+	    foreach ($user->projects as $key=>$project) {
+	    	$project['featured'] = $project->getMedia('image')->last() ? $project->getMedia('image')->last()->getUrl('slide'):'';
 		    $project['slide'] = $project->getMedia('slide') ? $project->getMedia('slide') : [];
 	    }
-    	$slides = $user->getMedia('slide') ? $user->getMedia('slide') : '';
+	    $slides = $user->getMedia('slide') ? $user->getMedia('slide') : '';
 	    $thumb = $user->getMedia('image')->last() ? $user->getMedia('image')->last()->getUrl('thumb') : '';
-        return view('frontend.user.show', compact(
-        	'user', 'knowledgeSkills', 'experiences', 'educations', 'projects', 'skillSkills', 'languageSkills', 'slides', 'thumb'
-        ));
+
+	    return view('frontend.user.show', compact('user', 'slides', 'thumb'));
     }
+
 }

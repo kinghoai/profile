@@ -12,8 +12,6 @@
 */
 
 Route::get('/', 'Frontend\UserController@showHome');
-//route show user CV
-Route::get('/profile/{slug}', 'Frontend\UserController@show')->name('user.showprofile');
 
 //post
 Route::get('/blog','Frontend\PostController@index')->name('frontend.post.index');

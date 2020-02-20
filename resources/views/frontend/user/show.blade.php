@@ -72,18 +72,20 @@
                         <div class="skills-con">
                             <div class="container-sub margin-top50">
                                 <div class="row">
-                                    @foreach($skillSkills as $skillSkill)
-                                    <div class="col-6 margin-bottom50">
-                                        <div class="col-6">
-                                            <span class="chart" data-percent="{{$skillSkill->percent}}">
-                                                <span class="percent"></span>
-                                            </span>
+                                    @foreach($user->skills as $skillSkill)
+                                        @if($skillSkill->type == 'skill')
+                                        <div class="col-6 margin-bottom50">
+                                            <div class="col-6">
+                                                <span class="chart" data-percent="{{$skillSkill->percent}}">
+                                                    <span class="percent"></span>
+                                                </span>
+                                            </div>
+                                            <div class="col-6 chart-text">
+                                                <h4>{{$skillSkill->title}}</h4>
+                                                <p>{{$skillSkill->level}}</p>
+                                            </div>
                                         </div>
-                                        <div class="col-6 chart-text">
-                                            <h4>{{$skillSkill->title}}</h4>
-                                            <p>{{$skillSkill->level}}</p>
-                                        </div>
-                                    </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -92,12 +94,14 @@
                                 <div class="row">
                                     <h3>Knowledge</h3>
                                     <p>{{$user->knowledge_description}}</p>
-                                    @foreach($knowledgeSkills as $knowledgeSkill)
-                                    <div class="col-4 margin-top10">
-                                        <ul>
-                                            <li>{{$knowledgeSkill->title}}</li>
-                                        </ul>
-                                    </div>
+                                    @foreach($user->skills as $knowledgeSkill)
+                                        @if($knowledgeSkill->type == 'knowledge')
+                                        <div class="col-4 margin-top10">
+                                            <ul>
+                                                <li>{{$knowledgeSkill->title}}</li>
+                                            </ul>
+                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -106,13 +110,15 @@
                                 <div class="row">
                                     <h3>Language Skills</h3>
                                     <p>{{$user->language_description}}</p>
-                                    @foreach($languageSkills as $languageSkill)
-                                    <div class="progressbar-main margin-top50">
-                                        <div class="progress-bar-description">{{$languageSkill->title}}</div>
-                                        <div class="progress">
-                                            <div class="progress-value" style="width: {{$languageSkill->percent}}%;"><span>{{$languageSkill->percent}}</span></div>
+                                    @foreach($user->skills as $languageSkill)
+                                        @if($languageSkill->type == 'language')
+                                        <div class="progressbar-main margin-top50">
+                                            <div class="progress-bar-description">{{$languageSkill->title}}</div>
+                                            <div class="progress">
+                                                <div class="progress-value" style="width: {{$languageSkill->percent}}%;"><span>{{$languageSkill->percent}}</span></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -131,7 +137,7 @@
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
-                                    @foreach($experiences as $experience)
+                                    @foreach($user->experiences as $experience)
                                     <div class="experience-details" style="width: 100%">
                                         <div class="col-7 margin-bottom50 margin-top50">
                                             <div class="row">
@@ -166,7 +172,7 @@
                             <div class="container-sub">
                                 <div class="full-divider"></div>
                                 <div class="row">
-                                    @foreach($educations as $education)
+                                    @foreach($user->educations as $education)
                                     <div class="education-details" style="width: 100%">
                                         <div class="col-6 margin-bottom50 margin-top50">
                                                 <div class="col-3 icon-block">{!! $education->icon ? $education->icon : '<i class="fa fa-laptop"></i>' !!}</div>
@@ -201,7 +207,7 @@
                                     <div id="grid-gallery" class="grid-gallery">
                                         <section class="grid-wrap">
                                             <ul class="grid">
-                                                @foreach($projects as $project)
+                                                @foreach($user->projects as $project)
                                                 <li>
                                                     <figure><img src="{{$project->featured}}" alt="{{$project->title}}"/>
                                                         <figcaption>
@@ -220,7 +226,7 @@
                                         <!-- Lightbox Popup -->
                                         <section class="slideshow">
                                             <ul>
-                                                @foreach($projects as $project)
+                                                @foreach($user->projects as $project)
                                                 <li>
                                                     <figure>
                                                         <figcaption>
